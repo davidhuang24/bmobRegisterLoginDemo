@@ -111,7 +111,7 @@ public class LoginOneKeyActivity extends AppCompatActivity implements View.OnCli
 				}
 			});
 		} else {
-			Toast.makeText(this, "请输正确格式的入手机号", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "请输入正确格式的手机号", Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -123,8 +123,8 @@ public class LoginOneKeyActivity extends AppCompatActivity implements View.OnCli
 	 * @exception
 	 */
 	private void oneKeyLogin() {
-		final String phone = et_phone.getText().toString();
-		final String code = et_code.getText().toString();
+		final String phone = et_phone.getText().toString().trim();
+		final String code = et_code.getText().toString().trim();
 
 		if (TextUtils.isEmpty(phone)) {
 			Toast.makeText(this, "手机号码不能为空", Toast.LENGTH_SHORT).show();

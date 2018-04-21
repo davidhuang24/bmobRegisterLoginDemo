@@ -89,8 +89,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 	 * @exception   
 	 */
 	private void login(){
-		final String account = et_account.getText().toString();
-		String password = et_password.getText().toString();
+		final String account = et_account.getText().toString().trim();
+		String password = et_password.getText().toString().trim();
 		if (TextUtils.isEmpty(account)) {//输入合法性检测,简单处理
 			Toast.makeText(this, "账号不能为空", Toast.LENGTH_SHORT).show();
 			return;
@@ -112,13 +112,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 				progress.dismiss();
 				User currentUser = BmobUser.getCurrentUser(User.class);
 				if(ex==null){//登陆成功
-					if(account.equals(currentUser.getEmail())&&currentUser.getEmailVerified()==false){//解决“邮箱未验证却可以登入”的问题
+					if(account.equals(currentUser.getEmail())&&!currentUser.getEmailVerified()){//解决“邮箱未验证却可以登入”的问题
 						clearEmailOfUser(currentUser.getObjectId());
 						BmobUser.logOut();
 						Toast.makeText(LoginActivity.this, "您的邮箱未验证，请重新绑定邮箱", Toast.LENGTH_SHORT).show();
 						return;
 					}
-					if(account.equals(currentUser.getMobilePhoneNumber())&&currentUser.getMobilePhoneNumberVerified()==false){//解决“手机号未验证却可以登入”的问题
+					if(account.equals(currentUser.getMobilePhoneNumber())&&!currentUser.getMobilePhoneNumberVerified()){//解决“手机号未验证却可以登入”的问题
 						clearPhoneNumberOfUser(currentUser.getObjectId());
 						BmobUser.logOut();
 						Toast.makeText(LoginActivity.this, "您的手机号未验证，请重新绑定手机号", Toast.LENGTH_SHORT).show();
