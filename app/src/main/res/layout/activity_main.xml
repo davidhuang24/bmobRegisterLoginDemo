@@ -6,6 +6,13 @@
     tools:context="com.example.davidhuang.bombregisterlogindemo.MainActivity" >
 
     <include layout="@layout/include_header" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/user_picture_default"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:id="@+id/tv_user"
