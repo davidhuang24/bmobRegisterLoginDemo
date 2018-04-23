@@ -121,8 +121,8 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
 	 * 重置密码
 	 */
 	private void resetPasswordByPhoneNum() {
-		final String code = et_code.getText().toString();
-		final String pwd = et_pwd.getText().toString();
+		final String code = et_code.getText().toString().trim();
+		final String pwd = et_pwd.getText().toString().trim();
 		if (TextUtils.isEmpty(code)) {
 			Toast.makeText(this, "验证码不能为空", Toast.LENGTH_SHORT).show();
 			return;

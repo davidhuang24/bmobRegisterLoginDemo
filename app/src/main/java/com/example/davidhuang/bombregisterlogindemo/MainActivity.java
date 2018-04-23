@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void UpdateUser(){//获取当前缓存用户
-        User user = BmobUser.getCurrentUser(User.class);
-        tv_user.setText("用户名："+user.getUsername()+"  年龄："+user.getAge()+
-                "  Email："+user.getEmail()+"  手机号"+user.getMobilePhoneNumber());
+        User currentUser = BmobUser.getCurrentUser(User.class);
+        tv_user.setText("用户名："+currentUser.getUsername()+"  年龄："+currentUser.getAge()+
+                "  Email："+currentUser.getEmail()+"  手机号"+currentUser.getMobilePhoneNumber());
     }
 
     @Override

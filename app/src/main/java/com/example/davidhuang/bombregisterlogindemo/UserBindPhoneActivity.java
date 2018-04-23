@@ -120,8 +120,8 @@ public class UserBindPhoneActivity extends AppCompatActivity implements View.OnC
 	 *验证验证码
 	 */
 	private void verifyCode(){
-		final String phone = et_number.getText().toString();
-		String code = et_input.getText().toString();
+		final String phone = et_number.getText().toString().trim();
+		String code = et_input.getText().toString().trim();
 		if (!InputLeagalCheck.isPhoneNum(phone )) {
 			Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
 			return;
@@ -179,5 +179,13 @@ public class UserBindPhoneActivity extends AppCompatActivity implements View.OnC
 			}
 		});
 	}
-	
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if(timer!=null){
+			timer.cancel();
+		}
+	}
 }
